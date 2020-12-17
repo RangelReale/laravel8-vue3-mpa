@@ -1,13 +1,15 @@
 <template>
-    <Alert color="red" message="I am an alert 1."></Alert>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/page1">Home</router-link> |
+      <router-link to="/page1/about">About</router-link>
+    </div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-import Alert from '@vuecommon/Alert.vue';
-
-export default {
-    components: { Alert },
-};
+export default {};
 </script>
 
 <style>

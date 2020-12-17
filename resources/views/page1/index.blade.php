@@ -22,7 +22,6 @@
     </head>
     <body class="antialiased">
         <div class="relative flex bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        Test
             <div id="app">
             </div>
         </div>
