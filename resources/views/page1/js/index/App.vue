@@ -1,9 +1,9 @@
 <template>
-    <Alert></Alert>
+    <Alert color="red" message="I am an alert 1."></Alert>
 </template>
 
 <script>
-import Alert from './Alert.vue';
+import Alert from '@vuecommon/Alert.vue';
 
 export default {
     components: { Alert },

@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
-const fs = require('fs')
+const fs = require('fs');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -29,14 +30,11 @@ fs.readdirSync('./resources/views').forEach(function (page) {
 })
 
 mix.js('resources/js/app.js', 'public/js')
+    .alias({
+        '@vuecommon': path.join(__dirname, 'resources/js/vuecommon')
+    })
     .disableNotifications()
     .extract()
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
-
-
-/* mix.js('resources/views/page1/js/index/app.js', 'public/js/views/page1/index.js')    
-    .vue({ version: 3 })
-    .disableNotifications();
- */
