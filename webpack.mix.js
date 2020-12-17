@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const fs = require('fs')
 
 /*
  |--------------------------------------------------------------------------
@@ -16,3 +17,24 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+const applicationBasePath = "./resources/views";
+fs.readdirSync('./resources/views').forEach(function (page) {
+    let jsDir = applicationBasePath + '/' + page + '/js'
+
+    if (fs.existsSync(jsDir)) {
+        fs.readdirSync(jsDir).forEach(function (app) {
+
+            mix.js(`resources/views/${page}/js/${app}/app.js`, `public/js/views/${page}/${app}.js`)
+                .vue({ version: 3 })
+                .disableNotifications();
+        
+        })
+    }
+
+})
+
+/* mix.js('resources/views/page1/js/index/app.js', 'public/js/views/page1/index.js')    
+    .vue({ version: 3 })
+    .disableNotifications();
+ */
