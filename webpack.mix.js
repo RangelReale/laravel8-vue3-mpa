@@ -12,20 +12,14 @@ const fs = require('fs')
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .disableNotifications()
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
-
 const applicationBasePath = "./resources/views";
 fs.readdirSync('./resources/views').forEach(function (page) {
     let jsDir = applicationBasePath + '/' + page + '/js'
 
     if (fs.existsSync(jsDir)) {
         fs.readdirSync(jsDir).forEach(function (app) {
-
             mix.js(`resources/views/${page}/js/${app}/app.js`, `public/js/views/${page}/${app}.js`)
+                .extract()
                 .vue({ version: 3 })
                 .disableNotifications();
         
@@ -33,6 +27,14 @@ fs.readdirSync('./resources/views').forEach(function (page) {
     }
 
 })
+
+mix.js('resources/js/app.js', 'public/js')
+    .disableNotifications()
+    .extract()
+    .postCss('resources/css/app.css', 'public/css', [
+        //
+    ]);
+
 
 /* mix.js('resources/views/page1/js/index/app.js', 'public/js/views/page1/index.js')    
     .vue({ version: 3 })

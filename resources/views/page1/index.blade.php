@@ -27,6 +27,8 @@
             </div>
         </div>
 
+        <script src="/js/manifest.js"></script>
+        <script src="/js/vendor.js"></script>
         <script src="/js/views/page1/index.js"></script>
     </body>
 </html>
